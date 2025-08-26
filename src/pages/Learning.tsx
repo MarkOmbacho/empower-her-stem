@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "@/lib/firebase";
+import LoginModal from "@/components/ui/LoginModal";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { BookOpen, Play, Star, Clock, Users, Award, Search, Filter } from "lucide-react";
@@ -9,6 +12,9 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 const Learning = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
+  const [loginOpen, setLoginOpen] = useState(false);
+  const [user] = useAuthState(auth);
+  const [selectedCourse, setSelectedCourse] = useState(null);
 
   const courses = [
     {
@@ -244,7 +250,18 @@ const Learning = () => {
                       </p>
                     </div>
 
-                    <Button className="w-full group-hover:scale-105 transition-bounce">
+                    <Button
+                      className="w-full group-hover:scale-105 transition-bounce"
+                      onClick={() => {
+                        if (!user) {
+                          setSelectedCourse(course);
+                          setLoginOpen(true);
+                        } else {
+                          // Navigate to course details or show details
+                          alert(`Accessing course: ${course.title}`);
+                        }
+                      }}
+                    >
                       <BookOpen className="h-4 w-4 mr-2" />
                       Start Learning
                     </Button>
@@ -323,6 +340,7 @@ const Learning = () => {
         </section>
       </main>
       
+      <LoginModal open={loginOpen} onClose={() => setLoginOpen(false)} />
       <Footer />
     </div>
   );

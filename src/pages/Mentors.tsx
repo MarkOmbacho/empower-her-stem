@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "@/lib/firebase";
+import LoginModal from "@/components/ui/LoginModal";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { Users, Star, Calendar, Video, MapPin, Search, Filter, Clock } from "lucide-react";
@@ -10,6 +13,9 @@ const Mentors = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedExpertise, setSelectedExpertise] = useState("all");
   const [selectedAvailability, setSelectedAvailability] = useState("all");
+  const [loginOpen, setLoginOpen] = useState(false);
+  const [user] = useAuthState(auth);
+  const [selectedMentor, setSelectedMentor] = useState(null);
 
   const mentors = [
     {
@@ -283,6 +289,15 @@ const Mentors = () => {
                     <Button 
                       className="flex-1 group-hover:scale-105 transition-bounce"
                       size="sm"
+                      onClick={() => {
+                        if (!user) {
+                          setSelectedMentor(mentor);
+                          setLoginOpen(true);
+                        } else {
+                          // Navigate to mentor details or booking
+                          alert(`Booking session with: ${mentor.name}`);
+                        }
+                      }}
                     >
                       <Calendar className="h-4 w-4 mr-2" />
                       Book Session
@@ -366,6 +381,7 @@ const Mentors = () => {
         </section>
       </main>
       
+      <LoginModal open={loginOpen} onClose={() => setLoginOpen(false)} />
       <Footer />
     </div>
   );

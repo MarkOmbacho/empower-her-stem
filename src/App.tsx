@@ -6,10 +6,15 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import ReportGBV from "./pages/ReportGBV";
-import Learning from "./pages/Learning";
-import Mentors from "./pages/Mentors";
+import LearningDemo from "./pages/LearningDemo";
+import MentorsDemo from "./pages/MentorsDemo";
+import MentorDetailDemo from "./pages/MentorDetailDemo";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import Dashboard from "./pages/Dashboard";
+import CourseDetails from "./pages/CourseDetails";
+import DashboardLogin from "./pages/DashboardLogin";
+import ClientDashboard from "./pages/ClientDashboard";
 
 const queryClient = new QueryClient();
 
@@ -23,9 +28,14 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
           <Route path="/report" element={<ReportGBV />} />
-          <Route path="/learning" element={<Learning />} />
-          <Route path="/mentors" element={<Mentors />} />
+          <Route path="/learning" element={<LearningDemo />} />
+          <Route path="/mentors" element={<MentorsDemo />} />
+          <Route path="/mentor/:id" element={<MentorDetailDemo />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/course/:courseId" element={<CourseDetails />} />
+          <Route path="/dashboard-login" element={<DashboardLogin />} />
+          <Route path="/client-dashboard" element={<ClientDashboard />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
