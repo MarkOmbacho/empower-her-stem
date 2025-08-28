@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "npm ci --no-audit --prefer-offline && node index.js",
-    "postinstall": "npm ci --no-audit --prefer-offline"
+    "start": "node index.js"
   },
   "dependencies": {
     "bcryptjs": "^3.0.2",
