@@ -11,14 +11,18 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-// Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/empowerher', {
+// Connect to MongoDB (use MONGODB_URI env var when available)
+const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/empowerher';
+mongoose.connect(mongoUri, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
 mongoose.connection.on('connected', () => {
-  console.log('Connected to MongoDB');
+  console.log('Connected to MongoDB:', mongoUri.startsWith('mongodb://localhost') ? 'local' : 'atlas/remote');
 });
+
+// JWT secret (used in dashboardAuth)
+process.env.JWT_SECRET = process.env.JWT_SECRET || 'dev-secret';
 
 app.get('/', (req, res) => {
   res.send('Empower Her STEM backend is running!');
