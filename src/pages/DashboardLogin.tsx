@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import api from "@/lib/api";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
@@ -12,8 +12,8 @@ const DashboardLogin = () => {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const res = await axios.post("/api/dashboard-auth/login", { username, password });
-      localStorage.setItem("dashboardToken", res.data.token);
+  const res = await api.post("/api/dashboard-auth/login", { username, password });
+  localStorage.setItem("dashboardToken", res.data.token);
       navigate("/client-dashboard");
     } catch (err: any) {
       setError(err.response?.data?.error || "Login failed");

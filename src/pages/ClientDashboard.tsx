@@ -1,6 +1,6 @@
 
 import { useEffect, useState } from "react";
-import axios from "axios";
+import api from "@/lib/api";
 import { Button } from "@/components/ui/button";
 import { Search, CheckCircle, Clock, XCircle } from "lucide-react";
 
@@ -17,12 +17,12 @@ const ClientDashboard = () => {
 
   useEffect(() => {
     const token = localStorage.getItem("dashboardToken");
-    axios.get("/api/reports", {
+    api.get("/api/reports", {
       headers: { Authorization: `Bearer ${token}` }
     }).then(res => {
       setReports(res.data);
       setLoading(false);
-    });
+    }).catch(() => setLoading(false));
   }, []);
 
   const filteredReports = reports.filter((r: any) =>

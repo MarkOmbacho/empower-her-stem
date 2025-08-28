@@ -1,0 +1,81 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f7f8fc;
+  color: #222;
+}
+header {
+  background: #5a4fcf;
+  color: #fff;
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+nav a {
+  color: #fff;
+  margin-left: 2rem;
+  text-decoration: none;
+  font-weight: bold;
+}
+nav a:hover {
+  text-decoration: underline;
+}
+.hero {
+  background: linear-gradient(90deg, #5a4fcf 0%, #7f53ac 100%);
+  color: #fff;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+.cta {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+  background: #ff6f61;
+  color: #fff;
+  border-radius: 2rem;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+.cta:hover {
+  background: #e85c50;
+}
+.pillars {
+  background: #fff;
+  margin: 2rem auto;
+  padding: 2rem;
+  max-width: 600px;
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px rgba(90,79,207,0.08);
+}
+.pillars ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+}
+.pillars li {
+  background: #f0eefe;
+  color: #5a4fcf;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  font-weight: bold;
+}
+.impact {
+  background: #f0eefe;
+  margin: 2rem auto;
+  padding: 2rem;
+  max-width: 600px;
+  border-radius: 1rem;
+  text-align: center;
+}
+footer {
+  background: #5a4fcf;
+  color: #fff;
+  text-align: center;
+  padding: 1rem 0;
+  margin-top: 2rem;
+  border-radius: 0 0 1rem 1rem;
+}

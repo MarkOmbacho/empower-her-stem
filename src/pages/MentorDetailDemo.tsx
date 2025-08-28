@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { Users, Star, Calendar, MapPin, Clock } from "lucide-react";
-import axios from "axios";
+import api from "@/lib/api";
 import { Button } from "@/components/ui/button";
 
 const MentorDetail = () => {
@@ -11,7 +11,7 @@ const MentorDetail = () => {
   const [mentor, setMentor] = useState(null);
 
   useEffect(() => {
-    axios.get(`/api/mentors/${id}`)
+    api.get(`/api/mentors/${id}`)
       .then(res => {
         if (res.data && res.data.name) {
           setMentor(res.data);

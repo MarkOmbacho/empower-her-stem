@@ -5,7 +5,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { Users, Star, Calendar, Video, MapPin, Clock, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import axios from "axios";
+import api from "@/lib/api";
 import { useNavigate } from "react-router-dom";
 
 const Mentors = () => {
@@ -16,7 +16,7 @@ const Mentors = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get("/api/mentors")
+    api.get("/api/mentors")
       .then(res => {
         if (Array.isArray(res.data) && res.data.length > 0) {
           setMentors(res.data);
