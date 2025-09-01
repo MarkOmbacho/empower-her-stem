@@ -8,12 +8,9 @@ const Header = () => {
   const location = useLocation();
 
   const navigation = [
-    { name: "Home", href: "/", icon: null },
-    { name: "About", href: "/about", icon: null },
     { name: "Report GBV", href: "/report", icon: Shield },
     { name: "STEM Academy", href: "/learning", icon: BookOpen },
-    { name: "Mentorship", href: "/mentors", icon: Users },
-    { name: "Contact", href: "/contact", icon: Phone },
+    { name: "Mentorship", href: "/mentors", icon: Users }
   ];
 
   const isActive = (href: string) => location.pathname === href;

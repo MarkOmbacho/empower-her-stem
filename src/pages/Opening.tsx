@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
 
 const Opening = () => {
   const navigate = useNavigate();
@@ -23,7 +22,6 @@ const Opening = () => {
           <p className="text-sm text-muted-foreground">Preparing your secure reporting environment...</p>
         </div>
       </main>
-      <Footer />
     </div>
   );
 };
