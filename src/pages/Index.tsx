@@ -1,25 +1,12 @@
 import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
-import HeroSection from "@/components/home/HeroSection";
-import PillarsSection from "@/components/home/PillarsSection";
-import ImpactSection from "@/components/home/ImpactSection";
-import TestimonialsSection from "@/components/home/TestimonialsSection";
-import CTASection from "@/components/home/CTASection";
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Index = () => {
-  return (
-    <div className="min-h-screen bg-background">
-      <Header />
-      <main>
-        <HeroSection />
-        <PillarsSection />
-        <ImpactSection />
-        <TestimonialsSection />
-        <CTASection />
-      </main>
-      <Footer />
-    </div>
-  );
+  const navigate = useNavigate();
+  useEffect(() => navigate('/report'), [navigate]);
+  return null;
 };
 
 export default Index;
+      <Header />
