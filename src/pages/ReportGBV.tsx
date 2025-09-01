@@ -3,6 +3,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { Shield, AlertTriangle, Phone, ExternalLink, CheckCircle, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import api from "@/lib/api";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -23,24 +24,13 @@ const ReportGBV = () => {
     // Generate case ID
     const id = `GIS-2025-${Math.floor(Math.random() * 9000) + 1000}`;
     setCaseId(id);
-    // Send report to backend
-    fetch('/api/reports', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        title: formData.type || 'GBV Report',
-        description: `Location: ${formData.location}\nDescription: ${formData.description}\nContact Preference: ${formData.contactPreference}\nAnonymous: ${formData.isAnonymous}`
-      })
+    // Send report to backend (use VITE_API_URL-aware axios instance)
+    api.post('/api/reports', {
+      title: formData.type || 'GBV Report',
+      description: `Location: ${formData.location}\nDescription: ${formData.description}\nContact Preference: ${formData.contactPreference}\nAnonymous: ${formData.isAnonymous}`
     })
-      .then(res => res.json())
-      .then(() => {
-        setIsSubmitted(true);
-      })
-      .catch(() => {
-        setIsSubmitted(true); // Still show success for privacy
-      });
+      .then(() => setIsSubmitted(true))
+      .catch(() => setIsSubmitted(true)); // still show success for privacy
   };
 
   const quickExit = () => {
