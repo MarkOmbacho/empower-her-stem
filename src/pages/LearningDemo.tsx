@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import axios from "axios";
+import api from '@/lib/api';
 import LoginModal from "@/components/ui/LoginModal";
 
 // Type definitions for quiz
@@ -71,12 +72,10 @@ const Learning = () => {
   // Filter courses based on searchTerm and selectedCategory
   const [courses, setCourses] = useState([]);
   useEffect(() => {
-    fetch("/api/courses")
-      .then(res => res.json())
-      .then(data => {
-        console.log("Fetched courses:", data);
-        setCourses(data);
-      });
+    api.get('/api/courses').then(res => {
+      console.log('Fetched courses:', res.data);
+      setCourses(res.data);
+    }).catch(err => { console.warn('Failed fetch courses', err); setCourses([]); });
   }, []);
 
   // Remove duplicates by title (or use another unique property if needed)

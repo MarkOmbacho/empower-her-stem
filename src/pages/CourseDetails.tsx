@@ -2,6 +2,7 @@
 
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import api from '@/lib/api';
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Award, User, Users, CheckCircle } from "lucide-react";
@@ -37,9 +38,7 @@ const CourseDetails = () => {
   const [progress, setProgress] = useState<ProgressType>({ xp: 0, completedModules: [] });
 
   useEffect(() => {
-    fetch(`/api/courses/${courseId}`)
-      .then(res => res.json())
-      .then(data => setCourse(data));
+    api.get(`/api/courses/${courseId}`).then(res => setCourse(res.data)).catch(()=>{});
     // Simulate progress
     setProgress({ xp: 100, completedModules: ["module1"] });
   }, [courseId]);
