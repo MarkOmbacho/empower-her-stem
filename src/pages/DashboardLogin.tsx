@@ -14,7 +14,12 @@ const DashboardLogin = () => {
     try {
   const res = await api.post("/api/dashboard-auth/login", { username, password });
   localStorage.setItem("dashboardToken", res.data.token);
-      navigate("/client-dashboard");
+      const role = res.data.user?.role;
+      if (role === 'tutor') {
+        navigate('/tutor-create');
+      } else {
+        navigate('/client-dashboard');
+      }
     } catch (err: any) {
       setError(err.response?.data?.error || "Login failed");
     }
@@ -23,7 +28,7 @@ const DashboardLogin = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 to-purple-200">
       <form className="bg-white rounded-xl shadow-lg p-8 w-full max-w-md" onSubmit={handleLogin}>
-        <h2 className="text-2xl font-bold mb-6 text-center">Client Dashboard Login</h2>
+  <h2 className="text-2xl font-bold mb-6 text-center">Dashboard Login</h2>
         {error && <div className="mb-4 text-red-600 text-center">{error}</div>}
         <input
           type="text"
@@ -42,6 +47,9 @@ const DashboardLogin = () => {
           required
         />
         <Button type="submit" className="w-full">Login</Button>
+        <div className="mt-4 text-center">
+          <a href="/tutor-auth" className="text-sm text-blue-600 underline">Sign up or login as a tutor</a>
+        </div>
       </form>
     </div>
   );
