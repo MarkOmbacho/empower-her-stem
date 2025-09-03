@@ -18,6 +18,7 @@ import TutorCourses from "./pages/TutorCourses";
 import TutorCourseCreate from "./pages/TutorCourseCreate";
 import TutorDashboard from "./pages/TutorDashboard";
 import TutorCourseEditor from "./pages/TutorCourseEditor";
+import TutorRegister from "./pages/TutorRegister";
 
 const queryClient = new QueryClient();
 
@@ -42,6 +43,7 @@ const App = () => (
           <Route path="/tutor-create" element={<TutorCourseCreate />} />
           <Route path="/tutor-dashboard" element={<TutorDashboard />} />
           <Route path="/tutor-editor/:courseId" element={<TutorCourseEditor />} />
+          <Route path="/tutor-register" element={<TutorRegister />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

@@ -5,11 +5,15 @@ import { Button } from '@/components/ui/button';
 
 export default function TutorDashboard(){
   const [courses, setCourses] = useState<any[]>([]);
+  const [profile, setProfile] = useState<any>(null);
   const navigate = useNavigate();
   const token = localStorage.getItem('dashboardToken');
 
   useEffect(()=>{
     api.get('/api/courses').then(res=>setCourses(res.data)).catch(()=>setCourses([]));
+    if(token){
+      api.get('/api/dashboard-auth/me', { headers: { Authorization: `Bearer ${token}` } }).then(res=>setProfile(res.data.user)).catch(()=>{});
+    }
   },[]);
 
   const handleDelete = async (id:string)=>{
@@ -21,7 +25,10 @@ export default function TutorDashboard(){
   return (
     <div className="p-8">
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-bold">Tutor Dashboard</h1>
+        <div>
+          <h1 className="text-3xl font-bold">Tutor Dashboard</h1>
+          {profile && <div className="text-sm text-slate-600">{profile.name} • {profile.email} • Role: {profile.role}</div>}
+        </div>
         <div className="flex gap-2">
           <Button onClick={()=>navigate('/tutor-create')}>Create Course</Button>
           <Button onClick={()=>window.location.href='/'}>View Site</Button>
