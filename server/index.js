@@ -29,7 +29,7 @@ app.get('/', (req, res) => {
 });
 
 // API routes
-app.use('/api/courses', require('./courses'));
+app.use('/api/courses', require('./routes/courses'));
 app.use('/api/mentors', require('./mentors'));
 app.use('/api/reports', reportsRoutes);
 app.use('/api/dashboard-auth', dashboardAuthRoutes);
