@@ -246,8 +246,8 @@ const ReportGBV = () => {
                   <div className="space-y-3">
                     <div>
                       <p className="font-medium text-foreground">Crisis Hotline</p>
-                      <a href="tel:+254700123456" className="text-destructive hover:underline">
-                        +254-700-123456
+                      <a href="tel:+254725618235" className="text-destructive hover:underline">
+                        +254-725 618235
                       </a>
                       <p className="text-xs text-muted-foreground">Available 24/7</p>
                     </div>

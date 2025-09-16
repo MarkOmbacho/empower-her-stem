@@ -83,7 +83,7 @@ const Footer = () => {
               <li className="flex items-center space-x-2">
                 <MapPin className="h-4 w-4 text-primary" />
                 <span className="text-muted-foreground text-sm">
-                  Nairobi Innovation Hub
+                  Ndia kuu Road
                 </span>
               </li>
               <li className="flex items-center space-x-2">
@@ -92,7 +92,7 @@ const Footer = () => {
                   href="mailto:support@girls-i-save.org"
                   className="text-muted-foreground text-sm hover:text-primary transition-smooth"
                 >
-                  support@girls-i-save.org
+                  info@girlsisave.co.ke
                 </a>
               </li>
               <li className="flex items-center space-x-2">
@@ -101,7 +101,7 @@ const Footer = () => {
                   href="tel:+254700123456"
                   className="text-muted-foreground text-sm hover:text-primary transition-smooth"
                 >
-                  +254-700-123456
+                  +254 725 618 235   
                 </a>
               </li>
             </ul>
