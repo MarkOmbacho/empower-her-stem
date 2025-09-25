@@ -7,10 +7,12 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
 
+  const token = typeof window !== 'undefined' ? localStorage.getItem('dashboardToken') : null;
   const navigation = [
     { name: "Report GBV", href: "/report", icon: Shield },
     { name: "STEM Academy", href: "/learning", icon: BookOpen },
-    { name: "Mentorship", href: "/mentors", icon: Users }
+    { name: "Mentorship", href: "/mentors", icon: Users },
+    ...(token ? [{ name: 'Reports Dashboard', href: '/client-dashboard', icon: Shield }] : [])
   ];
 
   const isActive = (href: string) => location.pathname === href;

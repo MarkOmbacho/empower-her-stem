@@ -16,7 +16,7 @@ const DashboardLogin = () => {
   localStorage.setItem("dashboardToken", res.data.token);
       const role = res.data.user?.role;
       if (role === 'tutor') {
-        navigate('/tutor-create');
+        navigate('/tutor-dashboard');
       } else {
         navigate('/client-dashboard');
       }
@@ -47,6 +47,9 @@ const DashboardLogin = () => {
           required
         />
         <Button type="submit" className="w-full">Login</Button>
+        <div className="mt-4 text-center">
+          <a href="/client-dashboard" className="text-xs text-gray-600 underline">Go to Reports Dashboard (if already logged in)</a>
+        </div>
         <div className="mt-4 text-center">
           <a href="/tutor-auth" className="text-sm text-blue-600 underline">Sign up or login as a tutor</a>
         </div>
