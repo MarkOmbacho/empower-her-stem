@@ -4,7 +4,7 @@ import { auth } from "@/lib/firebase";
 import { useNavigate } from "react-router-dom";
 import { Progress } from "@/components/ui/progress";
 import { Button } from "@/components/ui/button";
-import axios from "axios";
+import api from '@/lib/api';
 
 const Dashboard = () => {
   const [user] = useAuthState(auth);
@@ -14,10 +14,10 @@ const Dashboard = () => {
 
   useEffect(() => {
     if (user) {
-      axios.get(`/api/user/${user.uid}/progress`).then(res => {
-        setProgress(res.data.progress);
-        setCourses(res.data.courses);
-      });
+      api.get(`/api/user/${user.uid}/progress`).then(res => {
+        setProgress(res.data.progress || {});
+        setCourses(res.data.courses || []);
+      }).catch(()=>{});
     }
   }, [user]);
 

@@ -7,7 +7,6 @@ import { BookOpen, Play, Star, Clock, Users, Award, Search, Filter, CheckCircle 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import axios from "axios";
 import api from '@/lib/api';
 import LoginModal from "@/components/ui/LoginModal";
 
